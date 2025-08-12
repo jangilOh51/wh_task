@@ -1,0 +1,28 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# IDE Files
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.env
+.venv/
+
+# Test and Report
+.pytest_cache/
+allure-results/
+allure-report/
+
+# Logs
+*.log
+
+# Build artifacts
+dist/
+build/

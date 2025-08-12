@@ -1,0 +1,32 @@
+[project]
+name = "wh-task"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "jangil",email = "jangil.oh@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pytest (>=8.4.1,<9.0.0)",
+    "allure-pytest (>=2.15.0,<3.0.0)",
+    "requests (>=2.32.4,<3.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+packages = [
+    { include = "app" },
+]
+
+[tool.poetry.group.dev.dependencies]
+black = "^25.1.0"
+
+[tool.black]
+line-length = 88
+target-version = ['py312']
+
