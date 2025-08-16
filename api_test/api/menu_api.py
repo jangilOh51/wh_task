@@ -22,7 +22,6 @@ class MenuSelectApi(BaseAPI):
         self.client.post(endpoint=self.endpoint, header=self.header, json=self.body)
 
     def assert_success(self, assert_dto:MenuSelectAssertDto):
-
         res = self.client.response.json()
 
         # 정상인 경우 추가 항목 검증
