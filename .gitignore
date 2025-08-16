@@ -26,3 +26,4 @@ allure-report/
 # Build artifacts
 dist/
 build/
+.gemini/

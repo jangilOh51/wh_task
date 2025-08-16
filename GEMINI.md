@@ -1,5 +1,9 @@
 # 프로젝트 개요
-이 프로젝트는 API 테스트 자동화 구현 및 테스트 케이스 문서에 대한 내용입니다. 
+이 프로젝트는 API 테스트 자동화 구현 및 테스트 케이스 문서에 대한 내용입니다.
+AI 에이전트를 사용하여 API 명세서로부터 테스트 코드를 자동 생성하고, 생성된 코드를 실행하는 2-part 구조를 가집니다.
+
+- **`api_test_gen`**: Gradio 웹 UI를 통해 API 명세서(PDF)를 입력받아, LangChain/LangGraph 기반의 AI 에이전트가 테스트 코드를 생성하는 애플리케이션입니다.
+- **`api_test`**: `api_test_gen`에 의해 생성된 `pytest` 코드를 저장하고, 실행하고, 관리하는 테스트 프레임워크입니다.
 
 # 주요 지침
 - 모든 답변은 한글로 답변해주세요.
@@ -11,23 +15,34 @@
 - pytest : 테스트 프레임워크
 - allure : 리포트
 - requests : api 호출
+- gradio : 웹 UI
+- langchain, langgraph : AI 에이전트
 
+# 실행 방법
+- **테스트 코드 생성기 실행:**
+  ```bash
+  poetry run python api_test_gen/main.py
+  ```
+- **테스트 코드 실행:**
+  ```bash
+  poetry run python api_test/run.py
+  ```
 
-# 주요 디렉토리
-- `app`: 소스 코드
-- `scripts/`: 테스트 실행 배치파일
-- task : 시험문제
-- results : 테스트 케이스를 저장하는 폴더, 결과파일
+# TODO List
 
-# app 하위의 상세 코드 구조
-- codes : Enum들로 고정된 값들을 정의하는 패키지
-- common : 공통 함수를 정의하는 패키지
-- core : requests 호출 및 주요 모듈에 대한 패키지
-- models : dto, model등을 저장 및 관리
-- api : API 호출 및 관련 로직을 정의하는 패키지
-- tests : 테스트 케이스 및 
-
-# 코딩 컨벤션
-- black
-
-
+- [ ] **환경 설정**
+    - [ ] `pyproject.toml`에 신규 라이브러리 추가 (완료)
+    - [ ] `poetry install` 실행하여 의존성 설치 (사용자 실행 필요)
+- [ ] **`api_test_gen` (코드 생성기) 개발**
+    - [ ] `api_test_gen/docs`에 API 명세서 위치 (완료)
+    - [ ] LLM을 위한 프롬프트 정의 (`api_test_gen/agent/prompts.py`)
+    - [ ] LangChain 체인 정의 (`api_test_gen/agent/chains.py`)
+    - [ ] LangGraph 워크플로우 정의 (`api_test_gen/agent/graph.py`)
+    - [ ] Gradio UI 개발 및 에이전트 연동 (`api_test_gen/main.py`)
+- [ ] **`api_test` (테스트 프레임워크) 개발**
+    - [ ] 테스트 실행에 필요한 공통 모듈 개발 (`api_test/core/`)
+    - [ ] `pytest`를 호출하고 리포트를 생성하는 실행기 개발 (`api_test/run.py`)
+- [ ] **프로젝트 구조 변경**
+    - [ ] `app` 폴더 삭제 (완료)
+    - [ ] `api_test_gen`, `api_test` 패키지 구조 생성 (완료)
+    - [ ] 기본 파일 생성 (완료)
