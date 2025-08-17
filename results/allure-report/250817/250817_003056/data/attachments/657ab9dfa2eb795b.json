@@ -1,0 +1,42 @@
+{
+    "api_name": "OrderCreateApi",
+    "response_status_code": 400,
+    "response_body": {
+        "status": "ERROR",
+        "message": "유효하지 않은 예약",
+        "errorCode": "INVALID_RESERVATION",
+        "timestamp": "2025-08-07T12:30:00.123Z"
+    },
+    "response_headers": {
+        "Content-Type": "application/json;charset=UTF-8"
+    },
+    "req_body": {
+        "reservationId": "RSV_A7K9M2X8"
+    },
+    "assertion": [
+        {
+            "type": "equal",
+            "target": "http_status_code",
+            "expected": 400,
+            "actual": 400
+        },
+        {
+            "type": "equal",
+            "target": "status",
+            "expected": "ERROR",
+            "actual": "ERROR"
+        },
+        {
+            "type": "equal",
+            "target": "message",
+            "expected": "유효하지 않은 예약",
+            "actual": "유효하지 않은 예약"
+        },
+        {
+            "type": "equal",
+            "target": "error_code",
+            "expected": "INVALID_RESERVATION",
+            "actual": "INVALID_RESERVATION"
+        }
+    ]
+}

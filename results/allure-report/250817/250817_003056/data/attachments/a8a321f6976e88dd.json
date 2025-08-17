@@ -1,0 +1,43 @@
+{
+    "api_name": "OrderCreateApi",
+    "response_status_code": 500,
+    "response_body": {
+        "status": "ERROR",
+        "message": "예약 후 재료 소진",
+        "errorCode": "INGREDIENTS_EXHAUSTED",
+        "timestamp": "2025-08-07T12:30:00.123Z"
+    },
+    "response_headers": {
+        "Content-Type": "application/json;charset=UTF-8"
+    },
+    "req_body": {
+        "reservationId": "RSV_A7K9M2X8",
+        "memberNo": "1"
+    },
+    "assertion": [
+        {
+            "type": "equal",
+            "target": "http_status_code",
+            "expected": 500,
+            "actual": 500
+        },
+        {
+            "type": "equal",
+            "target": "status",
+            "expected": "ERROR",
+            "actual": "ERROR"
+        },
+        {
+            "type": "equal",
+            "target": "message",
+            "expected": "예약 후 재료 소진",
+            "actual": "예약 후 재료 소진"
+        },
+        {
+            "type": "equal",
+            "target": "error_code",
+            "expected": "INGREDIENTS_EXHAUSTED",
+            "actual": "INGREDIENTS_EXHAUSTED"
+        }
+    ]
+}

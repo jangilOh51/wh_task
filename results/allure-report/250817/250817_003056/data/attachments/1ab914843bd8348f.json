@@ -1,0 +1,44 @@
+{
+    "api_name": "MenuSelectApi",
+    "response_status_code": 400,
+    "response_body": {
+        "status": "ERROR",
+        "message": "요청이 유효하지 않습니다. 누락된 필드를 확인하세요.",
+        "errorCode": "INVALID_REQUEST",
+        "timestamp": "2025-08-07T12:30:00.123Z"
+    },
+    "response_headers": {
+        "Content-Type": "application/json;charset=UTF-8"
+    },
+    "req_body": {
+        "menuId": "menu_001",
+        "quantity": 1,
+        "memberNo": "1"
+    },
+    "assertion": [
+        {
+            "type": "equal",
+            "target": "http_status_code",
+            "expected": 400,
+            "actual": 400
+        },
+        {
+            "type": "equal",
+            "target": "status",
+            "expected": "ERROR",
+            "actual": "ERROR"
+        },
+        {
+            "type": "equal",
+            "target": "message",
+            "expected": "요청이 유효하지 않습니다. 누락된 필드를 확인하세요.",
+            "actual": "요청이 유효하지 않습니다. 누락된 필드를 확인하세요."
+        },
+        {
+            "type": "equal",
+            "target": "error_code",
+            "expected": "INVALID_REQUEST",
+            "actual": "INVALID_REQUEST"
+        }
+    ]
+}

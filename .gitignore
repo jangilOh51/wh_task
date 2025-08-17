@@ -17,8 +17,7 @@ __pycache__/
 
 # Test and Report
 .pytest_cache/
-allure-results/
-allure-report/
+results/allure-results/
 
 # Logs
 *.log
@@ -27,4 +26,3 @@ allure-report/
 dist/
 build/
 .gemini/
-docs/

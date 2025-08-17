@@ -1,0 +1,63 @@
+{
+    "api_name": "OrderCreateApi",
+    "response_status_code": 200,
+    "response_body": {
+        "status": "SUCCESS",
+        "message": "주문이 성공적으로 생성되었습니다",
+        "timestamp": "2025-08-07T12:30:00.123Z",
+        "data": {
+            "orderNo": "R7X9K2M8",
+            "orderStatus": "INITIALIZING",
+            "reservationId": "RSV_A7K9M2X8",
+            "createdAt": "2025-08-07T12:30:00.123Z",
+            "memberInfo": {
+                "memberNo": "member_123"
+            }
+        }
+    },
+    "response_headers": {
+        "Content-Type": "application/json;charset=UTF-8"
+    },
+    "req_body": {
+        "reservationId": "RSV_A7K9M2X8",
+        "memberNo": "1"
+    },
+    "assertion": [
+        {
+            "type": "equal",
+            "target": "http_status_code",
+            "expected": 200,
+            "actual": 200
+        },
+        {
+            "type": "equal",
+            "target": "status",
+            "expected": "SUCCESS",
+            "actual": "SUCCESS"
+        },
+        {
+            "type": "equal",
+            "target": "message",
+            "expected": "주문이 성공적으로 생성되었습니다",
+            "actual": "주문이 성공적으로 생성되었습니다"
+        },
+        {
+            "type": "exists",
+            "target": "timestamp",
+            "actual": "2025-08-07T12:30:00.123Z"
+        },
+        {
+            "type": "exists",
+            "target": "data",
+            "actual": {
+                "orderNo": "R7X9K2M8",
+                "orderStatus": "INITIALIZING",
+                "reservationId": "RSV_A7K9M2X8",
+                "createdAt": "2025-08-07T12:30:00.123Z",
+                "memberInfo": {
+                    "memberNo": "member_123"
+                }
+            }
+        }
+    ]
+}
