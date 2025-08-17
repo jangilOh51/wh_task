@@ -1,0 +1,45 @@
+{
+    "api_name": "MenuSelectApi",
+    "response_status_code": 400,
+    "response_body": {
+        "status": "ERROR",
+        "message": "메뉴가 존재하지 않습니다. 메뉴ID를 확인해주세요.",
+        "errorCode": "MENU_NOT_FOUND",
+        "timestamp": "2025-08-07T12:30:00.123Z"
+    },
+    "response_headers": {
+        "Content-Type": "application/json;charset=UTF-8"
+    },
+    "req_body": {
+        "menuId": "2",
+        "quantity": 1,
+        "shopId": "1",
+        "memberNo": "1"
+    },
+    "assertion": [
+        {
+            "type": "equal",
+            "target": "http_status_code",
+            "expected": 400,
+            "actual": 400
+        },
+        {
+            "type": "equal",
+            "target": "status",
+            "expected": "ERROR",
+            "actual": "ERROR"
+        },
+        {
+            "type": "equal",
+            "target": "message",
+            "expected": "메뉴가 존재하지 않습니다. 메뉴ID를 확인해주세요.",
+            "actual": "메뉴가 존재하지 않습니다. 메뉴ID를 확인해주세요."
+        },
+        {
+            "type": "equal",
+            "target": "error_code",
+            "expected": "MENU_NOT_FOUND",
+            "actual": "MENU_NOT_FOUND"
+        }
+    ]
+}

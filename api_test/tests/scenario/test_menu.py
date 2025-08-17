@@ -84,12 +84,12 @@ class TestMenuAPI:
     def test_menu_select_0004(self, f_default_header, mocker):
         # 데이터 설정
         menu_req_dto = MenuSelectReqDto(menu_id=MenuId.valid_menu_id, quantity=1, shop_id=ShopId.valid_shop_id, member_no=MemberNo.valid_member_no)
-        menu_assert_dto = MenuSelectAssertDto(status=MenuSelectStatus.INVALID_REQUEST)
+        menu_assert_dto = MenuSelectAssertDto(status=MenuSelectStatus.MENU_NOT_FOUND)
 
         # API연결이 되지 않아서 목설정
         mocker.patch(
             "api_test.core.api_client.requests.request",
-            return_value=MenuSelectInvalidRequestErrorResMock()
+            return_value=MenuSelectMenuNotFoundErrorResMock()
         )
 
         # 유효하지 않은 메뉴 설정
