@@ -16,17 +16,17 @@
 graph TD
     A[테스트 실행 스크립트] --> B(Pytest 테스트 러너)
     B --> C{테스트 케이스}
-    C --> D[서비스 계층 (Service Layer)]
-    D --> E[API 계층 (API Layer)]
-    E --> F[코어 API 클라이언트]
-    F --> G[API 엔드포인트 (대상 시스템)]
+    C --> D["서비스 계층 (Service Layer)"]
+    D --> E["API 계층 (API Layer)"]
+    E --> F["코어 API 클라이언트"]
+    F --> G["API 엔드포인트 (대상 시스템)"]
     G -- 응답 --> F
     F -- 응답 --> E
     E -- 응답 --> D
     D -- 응답 --> C
     C --> H[어설션 및 검증]
-    H --> I[테스트 결과 리포트 (Allure)]
-    C --> J[테스트 데이터 및 설정]
+    H --> I["테스트 결과 리포트 (Allure)"]
+    C --> J["테스트 데이터 및 설정"]
     J --> D
     J --> E
 ```
