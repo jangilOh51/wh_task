@@ -299,3 +299,47 @@ class TestMenuAPI:
 
         # 테스트
         menu_api.test(menu_assert_dto)
+
+    @allure.title(f"[메뉴선택][{CaseType.Negative}] 탈퇴한 member_no로 실패")
+    def test_menu_select_0014(self, f_default_header, mocker):
+        # 데이터 설정
+        menu_req_dto = MenuSelectReqDto(menu_id=MenuId.valid_menu_id, quantity=1, shop_id=ShopId.valid_shop_id, member_no=MemberNo.valid_member_no)
+        menu_assert_dto = MenuSelectAssertDto(status=MenuSelectStatus.INVALID_REQUEST)
+
+        # API연결이 되지 않아서 목설정
+        mocker.patch(
+            "api_test.core.api_client.requests.request",
+            return_value=MenuSelectInvalidRequestErrorResMock()
+        )
+
+        # member_no을 변경
+        menu_req_dto.member_no = MemberNo.withdrawn_member_no
+
+        # 호출 
+        menu_api = MenuSelectApi(header=f_default_header)
+        menu_api.request(menu_req_dto)
+
+        # 테스트
+        menu_api.test(menu_assert_dto)
+
+    @allure.title(f"[메뉴선택][{CaseType.Negative}] 비활성화된 Shop_id로 실패")
+    def test_menu_select_0015(self, f_default_header, mocker):
+        # 데이터 설정
+        menu_req_dto = MenuSelectReqDto(menu_id=MenuId.valid_menu_id, quantity=1, shop_id=ShopId.valid_shop_id, member_no=MemberNo.valid_member_no)
+        menu_assert_dto = MenuSelectAssertDto(status=MenuSelectStatus.INVALID_REQUEST)
+
+        # API연결이 되지 않아서 목설정
+        mocker.patch(
+            "api_test.core.api_client.requests.request",
+            return_value=MenuSelectInvalidRequestErrorResMock()
+        )
+
+        # shop_id 변경
+        menu_req_dto.shop_id = ShopId.disabled_shop_id
+
+        # 호출 
+        menu_api = MenuSelectApi(header=f_default_header)
+        menu_api.request(menu_req_dto)
+
+        # 테스트
+        menu_api.test(menu_assert_dto)

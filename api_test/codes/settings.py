@@ -7,10 +7,13 @@ class MenuId(StrEnum):
 class ShopId(StrEnum):
     valid_shop_id = "1"
     invalid_shop_id = "2"
+    disabled_shop_id = "3"
 
 class MemberNo(StrEnum):
     valid_member_no = "1"
     invalid_member_no = "2"
+    withdrawn_member_no = "3"
+
 
 class CaseType(StrEnum):
     Happy = "Happy"
